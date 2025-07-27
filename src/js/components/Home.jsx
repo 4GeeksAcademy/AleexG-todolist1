@@ -18,7 +18,7 @@ const Home = () => {
 	}
 
 	return (
-		<div className="text-center">
+		<div className="container text-center mt-5">
 			<h1>Todolist</h1>
 					<input 
 					type="text"
@@ -26,16 +26,15 @@ const Home = () => {
 					onKeyDown={handlerKeyDown}
 					placeholder="Añadir tarea"
 					value={inputValue}
+					className="mt-2"
 					>
 					</input>
-			<ul>
+			<ul className="list-group">
 				{
 					todos.map((toDo, index) => (
-						<li key={index}>
+						<li key={index} className="container list-group-item d-flex justify-content-evenly mt-2">
 							<span>{toDo}</span>
-							<span onClick={() => eliminarToDo(index)}>
-								<button>X</button>
-							</span>
+							<button className="btn btn-sm btn-outline-danger" onClick={() => eliminarToDo(index)}>X</button>
 						</li>
 					))
 				}
