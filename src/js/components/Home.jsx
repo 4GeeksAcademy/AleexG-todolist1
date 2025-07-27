@@ -26,7 +26,7 @@ const Home = () => {
 					onKeyDown={handlerKeyDown}
 					placeholder="Añadir tarea"
 					value={inputValue}
-					className="mt-2"
+					className="form-control mt-3"
 					>
 					</input>
 			<ul className="list-group">
