@@ -29,7 +29,7 @@ const Home = () => {
 					className="form-control mt-3"
 					>
 					</input>
-			<ul className="list-group">
+			<ul className="list-group mt-4">
 				{
 					todos.map((toDo, index) => (
 						<li key={index} className="container list-group-item d-flex justify-content-evenly mt-2">
