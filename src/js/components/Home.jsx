@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [inputValue, setInputValue] = useState("");
+	const [todos, setTodos] = useState([]);
+	
+	const handlerKeyDown = (e) =>{
+		if (e.key == "Enter"){
+			setTodos([...todos,inputValue])
+			setInputValue("")
+		}
+		
+	}
+	
+	const eliminarToDo = (indexToDo) =>{
+		const filter = todos.filter((toDo, index) => index !== indexToDo)
+		setTodos(filter)
+	}
+
 	return (
 		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<h1>Todolist</h1>
+					<input 
+					type="text"
+					onChange={(e) => setInputValue(e.target.value)}
+					onKeyDown={handlerKeyDown}
+					placeholder="Añadir tarea"
+					value={inputValue}
+					>
+					</input>
+			<ul>
+				{
+					todos.map((toDo, index) => (
+						<li key={index}>
+							<span>{toDo}</span>
+							<span onClick={() => eliminarToDo(index)}>
+								<button>X</button>
+							</span>
+						</li>
+					))
+				}
+			</ul>
 		</div>
 	);
 };
